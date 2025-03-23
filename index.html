@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite Account Checker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Fortnite Account Checker</h1>
+            <div class="logo-container">
+                <div class="logo"></div>
+            </div>
+        </div>
+
+        <div class="search-section">
+            <input type="text" id="username" placeholder="Enter Fortnite Username">
+            <button id="search-btn">Check Account</button>
+        </div>
+
+        <div class="loader" id="loader">
+            <div class="spinner"></div>
+            <p>Checking account data...</p>
+        </div>
+
+        <div class="error-message" id="error-message"></div>
+
+        <div class="results" id="results">
+            <!-- Account Overview Section -->
+            <div class="section-container">
+                <h2 class="section-title">Account Overview</h2>
+                <div class="profile-section">
+                    <div class="profile-header">
+                        <div id="avatar" class="avatar"></div>
+                        <div class="profile-info">
+                            <h2 id="display-name">Username</h2>
+                            <p id="account-id">Account ID: </p>
+                            <p id="account-level">Account Level: <span id="level-value">0</span></p>
+                            <div class="battle-pass">
+                                <p>Battle Pass Progress:</p>
+                                <div class="progress-bar">
+                                    <div id="battle-pass-progress" class="progress"></div>
+                                </div>
+                                <p>Level <span id="battle-pass-level">0</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Mode Stats Section -->
+            <div class="section-container">
+                <h2 class="section-title">Game Mode Stats</h2>
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="overall">Overall</button>
+                    <button class="tab-btn" data-tab="solo">Solo</button>
+                    <button class="tab-btn" data-tab="duo">Duo</button>
+                    <button class="tab-btn" data-tab="squad">Squad</button>
+                    <button class="tab-btn" data-tab="ltm">LTM</button>
+                </div>
+
+                <div class="stats-tabs-content">
+                    <!-- Overall Stats Tab -->
+                    <div class="tab-content active" id="overall-tab">
+                        <div class="stats-container">
+                            <div class="stats-card">
+                                <h3>Performance Overview</h3>
+                                <div class="stats-grid" id="overall-performance"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Combat Statistics</h3>
+                                <div class="stats-grid" id="overall-combat"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Survival Metrics</h3>
+                                <div class="stats-grid" id="overall-survival"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Match History</h3>
+                                <div class="stats-grid" id="overall-matches"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solo Stats Tab -->
+                    <div class="tab-content" id="solo-tab">
+                        <div class="stats-container">
+                            <div class="stats-card">
+                                <h3>Performance Overview</h3>
+                                <div class="stats-grid" id="solo-performance"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Combat Statistics</h3>
+                                <div class="stats-grid" id="solo-combat"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Survival Metrics</h3>
+                                <div class="stats-grid" id="solo-survival"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Match History</h3>
+                                <div class="stats-grid" id="solo-matches"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Duo Stats Tab -->
+                    <div class="tab-content" id="duo-tab">
+                        <div class="stats-container">
+                            <div class="stats-card">
+                                <h3>Performance Overview</h3>
+                                <div class="stats-grid" id="duo-performance"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Combat Statistics</h3>
+                                <div class="stats-grid" id="duo-combat"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Survival Metrics</h3>
+                                <div class="stats-grid" id="duo-survival"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Match History</h3>
+                                <div class="stats-grid" id="duo-matches"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Squad Stats Tab -->
+                    <div class="tab-content" id="squad-tab">
+                        <div class="stats-container">
+                            <div class="stats-card">
+                                <h3>Performance Overview</h3>
+                                <div class="stats-grid" id="squad-performance"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Combat Statistics</h3>
+                                <div class="stats-grid" id="squad-combat"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Survival Metrics</h3>
+                                <div class="stats-grid" id="squad-survival"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Match History</h3>
+                                <div class="stats-grid" id="squad-matches"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LTM Stats Tab -->
+                    <div class="tab-content" id="ltm-tab">
+                        <div class="stats-container">
+                            <div class="stats-card">
+                                <h3>Performance Overview</h3>
+                                <div class="stats-grid" id="ltm-performance"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Combat Statistics</h3>
+                                <div class="stats-grid" id="ltm-combat"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Survival Metrics</h3>
+                                <div class="stats-grid" id="ltm-survival"></div>
+                            </div>
+                            <div class="stats-card">
+                                <h3>Match History</h3>
+                                <div class="stats-grid" id="ltm-matches"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitive Stats Section -->
+            <div class="section-container" id="competitive-container">
+                <h2 class="section-title">Competitive Stats</h2>
+                <div class="stats-container">
+                    <div class="stats-card">
+                        <h3>Arena Mode Stats</h3>
+                        <div class="stats-grid" id="arena-stats"></div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Tournament Performance</h3>
+                        <div class="stats-grid" id="tournament-stats"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Season Progression Section -->
+            <div class="section-container">
+                <h2 class="section-title">Season Progression</h2>
+                <div class="stats-container">
+                    <div class="stats-card">
+                        <h3>Current Season</h3>
+                        <div class="stats-grid" id="current-season"></div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Previous Season</h3>
+                        <div class="stats-grid" id="previous-season"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Weapons & Loadout Section -->
+            <div class="section-container" id="weapons-container">
+                <h2 class="section-title">Weapons & Loadout Stats</h2>
+                <div class="stats-container">
+                    <div class="stats-card">
+                        <h3>Weapon Proficiency</h3>
+                        <div class="stats-grid" id="weapon-stats"></div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Building Statistics</h3>
+                        <div class="stats-grid" id="building-stats"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity Section -->
+            <div class="section-container">
+                <h2 class="section-title">Recent Activity</h2>
+                <div class="stats-container">
+                    <div class="stats-card">
+                        <h3>Last Match Statistics</h3>
+                        <div class="stats-grid" id="last-match"></div>
+                    </div>
+                    <div class="stats-card">
+                        <h3>Recent Achievements</h3>
+                        <div class="stats-grid" id="recent-achievements"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
